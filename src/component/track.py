@@ -96,7 +96,7 @@ class Track(Component):
             fx_n = int(m.group(1))
             if m.group(2) == 'name':
                 if args[0]:
-                    self._fx.append(Fx(self, n=fx_n, name=args[0], parent=self))
+                    self._fx.append(Fx(n=fx_n, name=args[0], parent=self))
                     self.notify_observers('fx')
             else:
                 if self.has_fx(fx_n):

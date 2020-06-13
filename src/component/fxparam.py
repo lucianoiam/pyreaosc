@@ -23,16 +23,15 @@ from base.types import OscArgument
 
 class FxParameter(Component):
 
-    def __init__(self, fx, n: int, name: str, value: float, *args, **kwargs):
+    def __init__(self, n: int, name: str, value: float, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._fx = fx
         self._n = n
         self._name = name
         self._value = value
 
     @property
     def fx(self):
-        return self._fx
+        return self.parent
 
     @property
     def n(self) -> int:

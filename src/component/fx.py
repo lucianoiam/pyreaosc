@@ -26,9 +26,8 @@ from .fxparam import FxParameter
 
 class Fx(Component):
 
-    def __init__(self, track, n: int, name: str, *args, **kwargs):
+    def __init__(self, n: int, name: str, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._track = track
         self._n = n
         self._name = name
         self._bypass = False
@@ -36,7 +35,7 @@ class Fx(Component):
 
     @property
     def track(self):
-        return self._track
+        return self.parent
 
     @property
     def n(self) -> int:
@@ -83,7 +82,7 @@ class Fx(Component):
             if self.has_parameter(param_n):
                 return self.get_parameter(param_n).handle_osc(path, *args)
             else:
-                param = FxParameter(self, n=param_n, name=None, value=args[0], parent=self)
+                param = FxParameter(n=param_n, name=None, value=args[0], parent=self)
                 self._parameters.append(param)
                 self.notify_observers('parameters')
                 return True

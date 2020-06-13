@@ -27,6 +27,10 @@ class Component(Observable):
         self._parent = parent
 
     @property
+    def parent(self) -> 'Component':
+        return self._parent
+
+    @property
     def channel(self) -> OscChannel:
         return self._parent.channel
     
