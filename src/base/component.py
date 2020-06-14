@@ -22,17 +22,13 @@ from .types import OscArgument
 
 class Component(Observable):
 
-    def __init__(self, parent):
+    def __init__(self, channel: OscChannel):
         super().__init__()
-        self._parent = parent
-
-    @property
-    def parent(self) -> 'Component':
-        return self._parent
+        self._channel = channel
 
     @property
     def channel(self) -> OscChannel:
-        return self._parent.channel
+        return self._channel
     
     def send_osc(self, path: str, *args: OscArgument):
         self.channel.send(path, *args)
@@ -50,12 +46,12 @@ class Component(Observable):
         self.notify_observers(prop)
 
 
-class RootComponent(Component):
+class ChildComponent(Component):
 
-    def __init__(self, channel: OscChannel):
-        super().__init__(None)
-        self._channel = channel
+    def __init__(self, parent):
+        super().__init__(parent.channel)
+        self._parent = parent
 
     @property
-    def channel(self) -> OscChannel:
-        return self._channel
+    def parent(self) -> Component:
+        return self._parent

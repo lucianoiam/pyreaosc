@@ -15,11 +15,11 @@
     along with this library.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from base.component import RootComponent
+from base.component import ChildComponent
 from base.types import OscArgument
 
 
-class Transport(RootComponent):
+class Transport(ChildComponent):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

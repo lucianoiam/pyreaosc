@@ -19,12 +19,12 @@ import re
 
 from typing import List
 
-from base.component import Component
+from base.component import ChildComponent
 from base.types import OscArgument
 from .fxparam import FxParameter
 
 
-class Fx(Component):
+class Fx(ChildComponent):
 
     def __init__(self, n: int, name: str, *args, **kwargs):
         super().__init__(*args, **kwargs)

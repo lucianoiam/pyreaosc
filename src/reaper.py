@@ -17,19 +17,19 @@
 
 from base import window
 from base.channel import OscChannel
-from base.component import RootComponent
+from base.component import Component
 from base.types import OscArgument
 from component.mixer import Mixer
 from component.transport import Transport
 
 
-class Client(RootComponent):
+class Client(Component):
 
     def __init__(self, host: str = '127.0.0.1', port: int = 8000):
         super().__init__(channel=OscChannel(host=host, port=port, handler=self.handle_osc))
         self._ready = False
-        self._mixer = Mixer(channel=self.channel)
-        self._transport = Transport(channel=self.channel)
+        self._mixer = Mixer(parent=self)
+        self._transport = Transport(parent=self)
 
     @property
     def ready(self) -> bool:

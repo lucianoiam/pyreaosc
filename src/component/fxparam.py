@@ -17,11 +17,11 @@
 
 import re
 
-from base.component import Component
+from base.component import ChildComponent
 from base.types import OscArgument
 
 
-class FxParameter(Component):
+class FxParameter(ChildComponent):
 
     def __init__(self, n: int, name: str, value: float, *args, **kwargs):
         super().__init__(*args, **kwargs)

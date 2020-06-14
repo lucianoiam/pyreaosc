@@ -19,12 +19,12 @@ import re
 
 from typing import List
 
-from base.component import RootComponent
+from base.component import ChildComponent
 from base.types import OscArgument
 from .track import Track
 
 
-class Mixer(RootComponent):
+class Mixer(ChildComponent):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
